@@ -13,26 +13,23 @@
         <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"></script>
 
     </head>
+	
     <body>
 
         <a-scene id="scene" arjs='trackingMethod: best; debugUIEnabled: false;' vr-mode-ui="enabled: false" ar-template >
             
             <a-assets>   
-                
-                <!-- Texture Image -->
+		
+    		<a-asset-item id="plane-obj" src="/models/Plane.obj"></a-asset-item>
+    		<a-asset-item id="plane-mtl" src="/models/Plane.mtl"></a-asset-item>
+  	</a-assets>
 
-                <img id="texture" src="images/3.png">
-
-            </a-assets>
             
 
-            <!-- Map Location Marker -->
+            <!-- Marker -->
 
             <a-marker id="marker3" type='pattern' url='markers/AIR50.pat' emitevents="true" cursor="rayOrigin: mouse" mappoint-handler>
-               <a-entity 
-		obj-model=”obj: url(/models/Plane.obj); 
-		mtl: url(/models/Plane.mtl)”>
-		</a-entity>
+  		<a-entity obj-model="obj: #plane-obj; mtl: #plane-mtl"></a-entity>
             </a-marker>     
             
             
