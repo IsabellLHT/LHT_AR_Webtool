@@ -1,24 +1,46 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
-<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-<script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.1/aframe/build/aframe-ar.js"></script>
-	
-	
-  <body style='margin : 0px; overflow: hidden;'>
-	  
-    <a-scene embedded arjs='sourceType: webcam'>
-	
-		
-		
-		<a-marker preset='custom' url='1.pat'>
-           
-          	<a-box position='0 0.5 0' material='color: blue;'></a-box>
-  
-  </a-marker>
-		
-      <a-entity camera></a-entity>
-		
-    </a-scene>
-	  
-  </body>
+    <head>
+        
+        <title> AR Invitation </title>
+        <meta name="viewport" content="width=device-width,height=device-height">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     
+        <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+        <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"></script>
+
+    </head>
+    <body>
+
+        <a-scene id="scene" arjs='trackingMethod: best; debugUIEnabled: false;' vr-mode-ui="enabled: false" ar-template >
+            
+            <a-assets>   
+                
+                <!-- Texture Image -->
+
+                <img id="texture" src="images/LHT_Logo.png">
+
+            </a-assets>
+            
+
+            <!-- Map Location Marker -->
+
+            <a-marker id="marker3" type='pattern' url='markers/marker16.pat' emitevents="true" cursor="rayOrigin: mouse" mappoint-handler>
+                <!--<a-box position='0 0 0' material='color: red;'></a-box>-->
+                <a-plane id="img-map" scale = "2 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#map-point'></a-plane>
+                <!--<a-entity text="font: https://cdn.aframe.io/fonts/mozillavr.fnt; value: Fun Moments"></a-entity>-->
+            </a-marker>     
+            
+            
+            <!-- Camera -->
+
+            <a-entity camera></a-entity>
+
+        </a-scene>
+
+
+    </body>
 </html>
