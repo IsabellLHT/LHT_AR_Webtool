@@ -28,10 +28,9 @@
 
             <!-- Map Location Marker -->
 
-            <a-marker id="AIRMarker" type='pattern' url='https://raw.githubusercontent.com/IsabellLHT/LHT_AR_Webtool/master/markers/AIR50.pat'>
+            <a-marker id="AIRMarker" type='pattern' url='https://raw.githubusercontent.com/IsabellLHT/LHT_AR_Webtool/master/markers/AIR50.pat' video-vidhandler>
 <!--				      <a-box color="#6173F4" opacity="0.8" depth="2"></a-box>-->
-				<a-video id = "vid"  rotation =  "-62.584 90 4.509"  scale="5 5 1" src="#alpha">
-     			 <video scale= "20 20 1" src="#source"></video></a-video>
+				<a-plane scale = "4 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
 				
 			</a-marker>     
             
