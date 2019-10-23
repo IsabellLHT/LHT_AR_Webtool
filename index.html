@@ -12,16 +12,42 @@
         <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
         <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"></script>
 
-    </head>
+    
+	<script>	
+		
+	AFRAME.registerComponent('video-vidhandler', {
+                init: function() {
+		    console.log('video init entered');
+                    this.toggle = false;
+                    this.vid = document.querySelector("#alpha");
+                    this.vid.pause();
+                },
+                tick: function() {
+                    if (this.el.object3D.visible == true) {
+                        if (!this.toggle) {
+                            this.toggle = true;
+                            this.vid.play();
+                        }
+                    } else {
+                        this.toggle = false;
+                        this.vid.pause();
+                    }
+                }
+            });
+	
+	
+	</script>
+	
+	</head>
     <body>
 
         <a-scene id="scene" arjs='trackingMethod: best; debugUIEnabled: false;' vr-mode-ui="enabled: false" ar-template >
             
             <a-assets>   
           
-				        <video controls autoplay id="alpha">
-  						<source src="assets/AlphaTestVideo.webm">
-					</video>
+                <video preload="none" id="alpha" response-type="arraybuffer" loop="false" crossorigin webkit-playsinline playsinline controls>
+                    <source  src="assets/AlphaTestVideo.webm">
+                </video>
 				
             </a-assets>
             
@@ -30,7 +56,8 @@
 
             <a-marker id="AIRMarker" type='pattern' url='https://raw.githubusercontent.com/IsabellLHT/LHT_AR_Webtool/master/markers/AIR50.pat' video-vidhandler>
 <!--				      <a-box color="#6173F4" opacity="0.8" depth="2"></a-box>-->
-				<a-plane scale = "4 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
+                <a-plane scale = "4 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#invitation' controls></a-plane>
+
 				
 			</a-marker>     
             
